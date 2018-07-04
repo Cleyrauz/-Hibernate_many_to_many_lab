@@ -1,8 +1,10 @@
 import db.DBConsole;
+import db.DBGame;
 import db.DBHelper;
 import models.Console;
 import models.Game;
 import models.GenreType;
+import models.Owner;
 
 import java.util.List;
 
@@ -49,6 +51,10 @@ public class Runner {
         Console xbox360 = DBHelper.find(Console.class, 3);
         List<Game> foundGames = DBConsole.getAvailableGames(xbox360);
 
+        Owner owner1 = new Owner("Cleyra", game1);
+        DBHelper.update(owner1);
+
+        List<Owner> getFavouriteOwner = DBGame.getFavouriteOwners(game1);
     }
 
 }
