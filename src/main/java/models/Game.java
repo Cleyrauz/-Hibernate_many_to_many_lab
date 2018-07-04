@@ -16,6 +16,7 @@ public class Game {
     private String title;
     private GenreType genreType;
     private List<Console> consoles;
+    private List<Owner> ownerFavourite;
 
     public Game(){
 
@@ -25,6 +26,7 @@ public class Game {
         this.title = title;
         this.genreType = genreType;
         this.consoles = new ArrayList<Console>();
+        this.ownerFavourite = new ArrayList<Owner>();
     }
 
     @Id
@@ -71,5 +73,14 @@ public class Game {
 
     public void addConsoles(Console console){
         this.consoles.add(console);
+    }
+
+    @OneToMany(mappedBy = "favouriteGame", fetch = FetchType.LAZY)
+    public List<Owner> getOwnerFavourite() {
+        return ownerFavourite;
+    }
+
+    public void setOwnerFavourite(List<Owner> ownerFavourite) {
+        this.ownerFavourite = ownerFavourite;
     }
 }
