@@ -41,7 +41,8 @@ public class Owner {
         this.name = name;
     }
 
-    @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name = "game_id", nullable = false)
     public Game getFavouriteGame() {
         return favouriteGame;
     }
